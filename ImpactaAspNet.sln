@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetVS2017.Capitulo01.Variaveis", "AspNetVS2017.Capitulo01.Variaveis\AspNetVS2017.Capitulo01.Variaveis.csproj", "{DB2C265C-B869-446E-B66A-6CE4185C8E74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetVS2017.Capitulo01.Troco", "AspNetVS2017.Capitulo01.Troco\AspNetVS2017.Capitulo01.Troco.csproj", "{41C62D10-39E7-435F-8BE2-19E0FC6D482B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetVS2017.Capitulo01.Frete", "AspNetVS2017.Capitulo01.Frete\AspNetVS2017.Capitulo01.Frete.csproj", "{5A461283-214F-49E0-898C-B49D7CDB6086}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetVS2017.Capitulo01.Repeticao.Testes", "AspNetVS2017.Capitulo01.Repeticao.Testes\AspNetVS2017.Capitulo01.Repeticao.Testes.csproj", "{0356A6FB-E202-4326-81A3-FEBB58771B34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetVS2017.Capitulo01.VetoresColecoes.Testes", "AspNetVS2017.Capitulo01.VetoresColecoes.Testes\AspNetVS2017.Capitulo01.VetoresColecoes.Testes.csproj", "{F70F9124-3D1C-4F38-AFD8-32AEF57CA9FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{DB2C265C-B869-446E-B66A-6CE4185C8E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB2C265C-B869-446E-B66A-6CE4185C8E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB2C265C-B869-446E-B66A-6CE4185C8E74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41C62D10-39E7-435F-8BE2-19E0FC6D482B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C62D10-39E7-435F-8BE2-19E0FC6D482B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41C62D10-39E7-435F-8BE2-19E0FC6D482B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41C62D10-39E7-435F-8BE2-19E0FC6D482B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A461283-214F-49E0-898C-B49D7CDB6086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A461283-214F-49E0-898C-B49D7CDB6086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A461283-214F-49E0-898C-B49D7CDB6086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A461283-214F-49E0-898C-B49D7CDB6086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0356A6FB-E202-4326-81A3-FEBB58771B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0356A6FB-E202-4326-81A3-FEBB58771B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0356A6FB-E202-4326-81A3-FEBB58771B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0356A6FB-E202-4326-81A3-FEBB58771B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F70F9124-3D1C-4F38-AFD8-32AEF57CA9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70F9124-3D1C-4F38-AFD8-32AEF57CA9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70F9124-3D1C-4F38-AFD8-32AEF57CA9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70F9124-3D1C-4F38-AFD8-32AEF57CA9FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

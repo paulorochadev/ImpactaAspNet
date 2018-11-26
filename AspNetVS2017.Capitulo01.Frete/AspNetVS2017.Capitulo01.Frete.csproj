@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB2C265C-B869-446E-B66A-6CE4185C8E74}</ProjectGuid>
+    <ProjectGuid>{5A461283-214F-49E0-898C-B49D7CDB6086}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AspNetVS2017.Capitulo01.Variaveis</RootNamespace>
-    <AssemblyName>AspNetVS2017.Capitulo01.Variaveis</AssemblyName>
+    <RootNamespace>AspNetVS2017.Capitulo01.Frete</RootNamespace>
+    <AssemblyName>AspNetVS2017.Capitulo01.Frete</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,16 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VariaveisForm.cs">
+    <Compile Include="FreteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VariaveisForm.Designer.cs">
-      <DependentUpon>VariaveisForm.cs</DependentUpon>
+    <Compile Include="FreteForm.Designer.cs">
+      <DependentUpon>FreteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="VariaveisForm.resx">
-      <DependentUpon>VariaveisForm.cs</DependentUpon>
+    <EmbeddedResource Include="FreteForm.resx">
+      <DependentUpon>FreteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
