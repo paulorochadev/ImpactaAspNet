@@ -58,7 +58,9 @@
   <ItemGroup>
     <Compile Include="CorRepositorioTests.cs" />
     <Compile Include="MarcaRepositorioTests.cs" />
+    <Compile Include="ModeloRepositorioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VeiculoRepositorioTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -73,6 +75,12 @@
       <Project>{2E86E8B0-F16C-497C-934F-CBB641A14BD0}</Project>
       <Name>Oficina.Repositorios.SistemaArquivos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Dados\Cor.txt" />
+    <Content Include="bin\Debug\Dados\Marca.txt" />
+    <Content Include="bin\Debug\Dados\Modelo.xml" />
+    <Content Include="bin\Debug\Dados\Veiculo.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
