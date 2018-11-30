@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 using System.Configuration;
 using Oficina.Dominio;
 using System.IO;
+using static System.Configuration.ConfigurationManager;
 
 
 namespace Oficina.Repositorios.SistemaArquivos
 {
     public class MarcaRepositorio
     {
-        private string camihoArquivo = ConfigurationManager.AppSettings["caminhoArquivoMarca"];
+        //private string camihoArquivo = ConfigurationManager.AppSettings["caminhoArquivoMarca"];
+
+        private string camihoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                AppSettings["caminhoArquivoMarca"]);
 
         public List<Marca> Selecionar()
         {

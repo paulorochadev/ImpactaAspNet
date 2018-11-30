@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<modelos>
+  <modelo>
+    <id>1</id>
+    <nome>Fox</nome>
+    <marcaId>1</marcaId>
+  </modelo>
+  <modelo>
+    <id>2</id>
+    <nome>Civic</nome>
+    <marcaId>2</marcaId>
+  </modelo>
+  <modelo>
+    <id>3</id>
+    <nome>Fit</nome>
+    <marcaId>2</marcaId>
+  </modelo>
+  <modelo>
+    <id>4</id>
+    <nome>HB20</nome>
+    <marcaId>3</marcaId>
+  </modelo>
+  <modelo>
+    <id>5</id>
+    <nome>KA</nome>
+    <marcaId>4</marcaId>
+  </modelo>
+</modelos>

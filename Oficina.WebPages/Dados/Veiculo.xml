@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<veiculos>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>8e40580c-3bcb-40b0-bd40-5dde9c1b06d7</Id>
+    <Placa>ABC1234</Placa>
+    <Ano>2014</Ano>
+    <Observacao>Observação</Observacao>
+    <Modelo>
+      <Id>1</Id>
+      <Nome>Fox</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>VW</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <Id>1</Id>
+      <Nome>Preto</Nome>
+    </Cor>
+    <Combustivel>Flex</Combustivel>
+    <Cambio>Automatico</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>bb24e094-0636-4037-b195-e7bbdc92d2f1</Id>
+    <Placa>ABC1234</Placa>
+    <Ano>2014</Ano>
+    <Observacao>Observação</Observacao>
+    <Modelo>
+      <Id>1</Id>
+      <Nome>Fox</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>VW</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <Id>1</Id>
+      <Nome>Preto</Nome>
+    </Cor>
+    <Combustivel>Flex</Combustivel>
+    <Cambio>Automatico</Cambio>
+  </Veiculo>
+</veiculos>
