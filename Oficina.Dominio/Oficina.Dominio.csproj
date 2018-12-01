@@ -41,12 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cambio.cs" />
+    <Compile Include="Caminhao.cs" />
+    <Compile Include="Carroceria.cs" />
     <Compile Include="Combustivel.cs" />
     <Compile Include="Cor.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Modelo.cs" />
+    <Compile Include="Motocicleta.cs" />
+    <Compile Include="Quadro.cs" />
+    <Compile Include="QuantidadeEixo.cs" />
     <Compile Include="Veiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VeiculoPasseio.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

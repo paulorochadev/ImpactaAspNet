@@ -40,4 +40,22 @@
     <Combustivel>Flex</Combustivel>
     <Cambio>Automatico</Cambio>
   </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>4048cb84-a489-4c7e-a77e-31d6f57765b1</Id>
+    <Ano>2001</Ano>
+    <Modelo>
+      <Id>3</Id>
+      <Nome>Fit</Nome>
+      <Marca>
+        <Id>2</Id>
+        <Nome>Honda</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <Id>2</Id>
+      <Nome>Azul</Nome>
+    </Cor>
+    <Combustivel>Alcool</Combustivel>
+    <Cambio>SemiAutomatico</Cambio>
+  </Veiculo>
 </veiculos>
