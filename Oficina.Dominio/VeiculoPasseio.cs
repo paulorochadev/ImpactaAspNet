@@ -8,8 +8,11 @@ namespace Oficina.Dominio
 {
     public class VeiculoPasseio : Veiculo
     {
+        //ToDo: Orientação a Objetivo - Herança ( : ) com a Classe Veiculo
+
         public Carroceria Carroceria { get; set; }
 
+        //ToDo: Orientação a Objetivo - Polimorfismo por Sobrescrita
         public override List<string> Validar()
         {
             var erros = ValidarBase();

@@ -45,6 +45,7 @@
     <Compile Include="MarcaRepositorio.cs" />
     <Compile Include="ModeloRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositorioBase.cs" />
     <Compile Include="VeiculoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>

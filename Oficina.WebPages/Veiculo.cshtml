@@ -33,17 +33,35 @@
             margin-bottom: 5px;
         }
 
-            input[type=submit] {
-                width: 300px;
-            }
+        input[type=submit] {
+            width: 300px;
+        }
+
+        #mensagemErro{
+            height: 40px;
+            background-color: #dc3545;
+            margin-bottom: 10px;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 40px;
+        }
     </style>
 
 </head>
 <body>
     @if (IsPost)
     {
-        veiculoAplicacao.Inserir();
-        Response.Redirect("Veiculo");
+        try
+        {
+            veiculoAplicacao.Inserir();
+            Response.Redirect("Veiculo");
+        }
+        catch
+        {
+            <div id="mensagemErro">@HttpContext.Current.Items["MensagemErro"]</div>
+            
+        }
     }
 
     <h1>Cadastro de Veículo</h1>
@@ -68,17 +86,17 @@
         </select>
         <br />
         <label for="placa">Placa</label>
-        <input type="text" name="`laca" value="" />
+        <input type="text" name="placa" value="@Request.Form["placa"]" />
         <br />
         <label for="ano">Ano</label>
-        <input type="text" name="Ano" value="" />
+        <input type="text" name="ano" value="@Request.Form["ano"]" />
         <br />
         <label for="cor">Cor</label>
         <select name="cor">
             <option value="">Selecione</option>
             @foreach (var cor in veiculoAplicacao.Cores)
             {
-                <option value="@cor.Id">@cor.Nome</option>
+                <option value="@cor.Id" selected="@Convert.ToBoolean(cor.Id.ToString() == Request.Form["cor"])">@cor.Nome</option>
             }
         </select>
         <br />

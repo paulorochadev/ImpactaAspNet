@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 namespace Oficina.Dominio
 {
-    public abstract class Veiculo
+    //ToDo: Orientação a Objetos - Classe (Entidade) ou Abstração.
+
+    public abstract class Veiculo //: Object
     {
         //public Veiculo()
         //{
@@ -12,7 +14,30 @@ namespace Oficina.Dominio
         //}
 
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string Placa { get; set; }
+
+        //private string placa;
+
+        //public string Placa
+        //{
+        //    get
+        //    {
+        //        return placa.ToUpper();
+        //    }
+        //    set
+        //    {
+        //        placa = value.ToUpper();
+        //    }
+        //}
+
+        private string placa;
+
+        //ToDo: Orientação a Objetivo - Encapsulamento
+        public string Placa
+        {
+            get { return placa?.ToUpper(); }
+            set { placa = value?.ToUpper(); }
+        }
+
         public int Ano { get; set; }
         public string Observacao { get; set; }
         public Modelo Modelo { get; set; }
@@ -20,6 +45,12 @@ namespace Oficina.Dominio
         public Combustivel Combustivel { get; set; }
         public Cambio Cambio { get; set; }
 
+        //ToDo: Orientação a Objetivo - Encapsulamento
+        public DateTime Agora
+        {
+            get { return DateTime.Now; }
+        }
+        
         public abstract List<string> Validar();
 
         protected List<string>ValidarBase()
@@ -32,6 +63,13 @@ namespace Oficina.Dominio
             }
 
             return erros;
+        }
+
+        public override string ToString()
+        {
+            //return base.ToString();
+
+            return string.Format(" {0} {1} {2}", Modelo.Marca.Nome, Modelo.Nome, Placa);
         }
     }
 }

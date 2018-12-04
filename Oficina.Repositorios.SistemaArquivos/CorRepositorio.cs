@@ -10,14 +10,19 @@ using static System.Configuration.ConfigurationManager;
 
 namespace Oficina.Repositorios.SistemaArquivos
 {
-    public class CorRepositorio
+    public class CorRepositorio : RepositorioBase
     {
         //const string caminhoArquivo = @"Dados\Cor.txt";
 
         //ToDo: Implementar Método de Extensão
-        private string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                AppSettings["caminhoArquivoCor"]);
+        private string caminhoArquivo;
 
+        public CorRepositorio()
+        {
+            caminhoArquivo = ObterCaminhoCompleto("caminhoArquivoCor");
+        }
+
+        //ToDo: Orientação a Objetivo - Polimorfismo por SobreCarga
         public List<Cor> Selecionar()
         {
             var cores = new List<Cor>();
