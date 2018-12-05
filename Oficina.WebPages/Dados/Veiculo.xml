@@ -58,4 +58,24 @@
     <Combustivel>Alcool</Combustivel>
     <Cambio>SemiAutomatico</Cambio>
   </Veiculo>
+  <VeiculoPasseio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>b93b5d17-634b-40e9-9039-1943f6444d10</Id>
+    <Placa>ASDDAD</Placa>
+    <Ano>2018</Ano>
+    <Modelo>
+      <Id>4</Id>
+      <Nome>HB20</Nome>
+      <Marca>
+        <Id>3</Id>
+        <Nome>Hyundai</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <Id>5</Id>
+      <Nome>Branco</Nome>
+    </Cor>
+    <Combustivel>Eletrico</Combustivel>
+    <Cambio>SemiAutomatico</Cambio>
+    <Carroceria>Hatch</Carroceria>
+  </VeiculoPasseio>
 </veiculos>
