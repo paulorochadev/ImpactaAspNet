@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 //---
 using AspNetVS2017.Capitulo03.Portifolio.Models;
-
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace AspNetVS2017.Capitulo03.Portifolio.Controllers
 {
@@ -37,6 +38,37 @@ namespace AspNetVS2017.Capitulo03.Portifolio.Controllers
             {
                 return View(viewModel);
             }
+
+            var stringConexao = ConfigurationManager.ConnectionStrings["portfolioSqlServer"].ConnectionString;
+
+            using (var conexao = new SqlConnection(stringConexao))
+            {
+                conexao.Open();
+
+                const string instrucao = @"
+                            INSERT INTO [dbo].[Contato]
+                                       ([Nome]
+                                       ,[Email]
+                                       ,[Mensagem])
+                                 VALUES
+                                       (@Nome
+                                       ,@Email
+                                       ,@Mensagem)
+                            ";
+
+                using (var comando = new SqlCommand(instrucao, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Nome", viewModel.Nome);
+                    comando.Parameters.AddWithValue("@Email", viewModel.Email);
+                    comando.Parameters.AddWithValue("@Mensagem", viewModel.Mensagem);
+                    
+                    comando.ExecuteNonQuery();
+                }
+                
+                //conexao.Close(); -- Não precisa usar o CLOSE quando utiliza o USING
+            }
+
+            ModelState.Clear();
 
             return View();
         }
