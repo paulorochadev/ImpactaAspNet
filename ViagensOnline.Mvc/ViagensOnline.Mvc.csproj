@@ -166,6 +166,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Imagens\Destinos\Paulista.jpg" />
+    <Content Include="Content\Imagens\Destinos\Rio.png" />
+    <Content Include="Content\Imagens\Destinos\SP.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -201,10 +204,13 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Destinos\Index.cshtml" />
+    <Content Include="Views\Destinos\Details.cshtml" />
+    <Content Include="Views\Destinos\Create.cshtml" />
+    <Content Include="Views\Destinos\Edit.cshtml" />
+    <Content Include="Views\Destinos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Imagens\Destinos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
