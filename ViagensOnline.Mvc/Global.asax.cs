@@ -16,6 +16,15 @@ namespace ViagensOnline.Mvc
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+// Diretiva de Pré Processamento
+#if DEBUG
+            BundleTable.EnableOptimizations = false;
+
+#else
+            BundleTable.EnableOptimizations = true;
+
+#endif
         }
     }
 }
