@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LojaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="LojaModelStoreContainer">
+    <EntitySet Name="Produto" EntityType="LojaModel.Store.Produto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categoria" EntityType="LojaModel.Store.Categoria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Fornecedor" EntityType="LojaModel.Store.Fornecedor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProdutoImagem" EntityType="LojaModel.Store.ProdutoImagem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoriaFornecedor" EntityType="LojaModel.Store.CategoriaFornecedor" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoriaProduto" Association="LojaModel.Store.CategoriaProduto">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaFornecedor_Categoria" Association="LojaModel.Store.FK_CategoriaFornecedor_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="CategoriaFornecedor" EntitySet="CategoriaFornecedor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaFornecedor_Fornecedor" Association="LojaModel.Store.FK_CategoriaFornecedor_Fornecedor">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="CategoriaFornecedor" EntitySet="CategoriaFornecedor" />
+    </AssociationSet>
+    <AssociationSet Name="ProdutoProdutoImagem" Association="LojaModel.Store.ProdutoProdutoImagem">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ProdutoImagem" EntitySet="ProdutoImagem" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Preco" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Categoria_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Fornecedor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ProdutoImagem">
+    <Key>
+      <PropertyRef Name="Produto_Id" />
+    </Key>
+    <Property Name="Produto_Id" Type="int" Nullable="false" />
+    <Property Name="Imagem" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoriaFornecedor">
+    <Key>
+      <PropertyRef Name="Categoria_Id" />
+      <PropertyRef Name="Fornecedor_Id" />
+    </Key>
+    <Property Name="Categoria_Id" Type="int" Nullable="false" />
+    <Property Name="Fornecedor_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CategoriaProduto">
+    <End Role="Categoria" Type="LojaModel.Store.Categoria" Multiplicity="1" />
+    <End Role="Produto" Type="LojaModel.Store.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="Categoria_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProdutoProdutoImagem">
+    <End Role="Produto" Type="LojaModel.Store.Produto" Multiplicity="1" />
+    <End Role="ProdutoImagem" Type="LojaModel.Store.ProdutoImagem" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProdutoImagem">
+        <PropertyRef Name="Produto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaFornecedor_Categoria">
+    <End Role="Categoria" Type="LojaModel.Store.Categoria" Multiplicity="1" />
+    <End Role="CategoriaFornecedor" Type="LojaModel.Store.CategoriaFornecedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoriaFornecedor">
+        <PropertyRef Name="Categoria_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaFornecedor_Fornecedor">
+    <End Role="CategoriaFornecedor" Type="LojaModel.Store.CategoriaFornecedor" Multiplicity="*" />
+    <End Role="Fornecedor" Type="LojaModel.Store.Fornecedor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoriaFornecedor">
+        <PropertyRef Name="Fornecedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="LojaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="LojaModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Produto" EntityType="LojaModel.Produto" />
+          <EntitySet Name="Categoria" EntityType="LojaModel.Categoria" />
+          <AssociationSet Name="CategoriaProduto" Association="LojaModel.CategoriaProduto">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Produto" EntitySet="Produto" />
+          </AssociationSet>
+          <EntitySet Name="Fornecedor" EntityType="LojaModel.Fornecedor" />
+          <AssociationSet Name="CategoriaFornecedor" Association="LojaModel.CategoriaFornecedor">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Fornecedor" EntitySet="Fornecedor" />
+          </AssociationSet>
+          <EntitySet Name="ProdutoImagem" EntityType="LojaModel.ProdutoImagem" />
+          <AssociationSet Name="ProdutoProdutoImagem" Association="LojaModel.ProdutoProdutoImagem">
+            <End Role="Produto" EntitySet="Produto" />
+            <End Role="ProdutoImagem" EntitySet="ProdutoImagem" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="200" Unicode="true" />
+          <Property Name="Preco" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <NavigationProperty Name="Categoria" Relationship="LojaModel.CategoriaProduto" FromRole="Produto" ToRole="Categoria" />
+          <NavigationProperty Name="ProdutoImagem" Relationship="LojaModel.ProdutoProdutoImagem" FromRole="Produto" ToRole="ProdutoImagem" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" Unicode="true" MaxLength="200" />
+          <NavigationProperty Name="Produto" Relationship="LojaModel.CategoriaProduto" FromRole="Categoria" ToRole="Produto" />
+          <NavigationProperty Name="Fornecedor" Relationship="LojaModel.CategoriaFornecedor" FromRole="Categoria" ToRole="Fornecedor" />
+        </EntityType>
+        <Association Name="CategoriaProduto">
+          <End Type="LojaModel.Categoria" Role="Categoria" Multiplicity="1" />
+          <End Type="LojaModel.Produto" Role="Produto" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Fornecedor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="200" Unicode="true" />
+          <NavigationProperty Name="Categoria" Relationship="LojaModel.CategoriaFornecedor" FromRole="Fornecedor" ToRole="Categoria" />
+        </EntityType>
+        <Association Name="CategoriaFornecedor">
+          <End Type="LojaModel.Categoria" Role="Categoria" Multiplicity="*" />
+          <End Type="LojaModel.Fornecedor" Role="Fornecedor" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ProdutoImagem">
+          <Key>
+            <PropertyRef Name="Produto_Id" />
+          </Key>
+          <Property Name="Produto_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Imagem" Type="Binary" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="Produto" Relationship="LojaModel.ProdutoProdutoImagem" FromRole="ProdutoImagem" ToRole="Produto" />
+        </EntityType>
+        <Association Name="ProdutoProdutoImagem">
+          <End Type="LojaModel.Produto" Role="Produto" Multiplicity="1" />
+          <End Type="LojaModel.ProdutoImagem" Role="ProdutoImagem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Produto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProdutoImagem">
+              <PropertyRef Name="Produto_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LojaModelStoreContainer" CdmEntityContainer="LojaModelContainer">
+    <EntitySetMapping Name="Produto">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaModel.Produto)">
+        <MappingFragment StoreEntitySet="Produto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaModel.Categoria)">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fornecedor">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaModel.Fornecedor)">
+        <MappingFragment StoreEntitySet="Fornecedor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdutoImagem">
+      <EntityTypeMapping TypeName="IsTypeOf(LojaModel.ProdutoImagem)">
+        <MappingFragment StoreEntitySet="ProdutoImagem">
+          <ScalarProperty Name="Produto_Id" ColumnName="Produto_Id" />
+          <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CategoriaProduto" TypeName="LojaModel.CategoriaProduto" StoreEntitySet="Produto">
+      <EndProperty Name="Categoria">
+        <ScalarProperty Name="Id" ColumnName="Categoria_Id" />
+      </EndProperty>
+      <EndProperty Name="Produto">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CategoriaFornecedor" TypeName="LojaModel.CategoriaFornecedor" StoreEntitySet="CategoriaFornecedor">
+      <EndProperty Name="Categoria">
+        <ScalarProperty Name="Id" ColumnName="Categoria_Id" />
+      </EndProperty>
+      <EndProperty Name="Fornecedor">
+        <ScalarProperty Name="Id" ColumnName="Fornecedor_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

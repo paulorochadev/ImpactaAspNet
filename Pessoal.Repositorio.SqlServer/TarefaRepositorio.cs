@@ -35,7 +35,17 @@ namespace Pessoal.Repositorio.SqlServer
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            using (var conexao = new SqlConnection(stringConexao))
+            {
+                conexao.Open();
+
+                using (var comando = new SqlCommand("TarefaExcluir", conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@id", id);
+                    comando.ExecuteNonQuery();
+                }
+            }
         }
 
         public int Inserir(Tarefa tarefa)
@@ -63,7 +73,7 @@ namespace Pessoal.Repositorio.SqlServer
                 parametros.Add(new SqlParameter("@id", tarefa.Id));
             }
 
-            parametros.Add(new SqlParameter("@nome", tarefa.Concluida));
+            parametros.Add(new SqlParameter("@nome", tarefa.Nome));
             parametros.Add(new SqlParameter("@prioridade", tarefa.Prioridade));
             parametros.Add(new SqlParameter("@concluida", tarefa.Concluida));
             parametros.Add(new SqlParameter("@observacoes", tarefa.Observacoes));
@@ -73,12 +83,66 @@ namespace Pessoal.Repositorio.SqlServer
 
         public Tarefa Selecionar(int id)
         {
-            throw new NotImplementedException();
+            Tarefa tarefa = null;
+
+            using (var conexao = new SqlConnection(stringConexao))
+            {
+                conexao.Open();
+
+                using (var comando = new SqlCommand("TarefaSelecionar", conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@id", id);
+
+                    using (var registros = comando.ExecuteReader())
+                    {
+                        if (registros.Read())
+                        {
+                            tarefa = Mapear(registros);
+                        }
+                    }
+                }
+            }
+
+            return tarefa;
         }
 
         public List<Tarefa> Selecionar()
         {
-            throw new NotImplementedException();
+            var tarefas = new List<Tarefa>();
+
+            using (var conexao = new SqlConnection(stringConexao))
+            {
+                conexao.Open();
+
+                using (var comando = new SqlCommand("TarefaSelecionar", conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    using (var registros = comando.ExecuteReader())
+                    {
+                        while (registros.Read())
+                        {
+                            tarefas.Add(Mapear(registros));
+                        }
+                    }
+                }
+            }
+
+            return tarefas;
+        }
+
+        private Tarefa Mapear(SqlDataReader registros)
+        {
+            var tarefa = new Tarefa();
+
+            tarefa.Id = Convert.ToInt32(registros["Id"]);
+            tarefa.Nome = registros["Nome"].ToString();
+            tarefa.Prioridade = (Prioridade)Convert.ToInt32(registros["Prioridade"]);
+            tarefa.Concluida = Convert.ToBoolean(registros["Concluida"]);
+            tarefa.Observacoes = Convert.ToString(registros["Observacoes"]);
+
+            return tarefa;
         }
     }
 }
