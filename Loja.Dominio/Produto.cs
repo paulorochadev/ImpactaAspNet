@@ -9,21 +9,16 @@ namespace Loja.Dominio
     public class Produto
     {
         public int Id { get; set; }
-
         public string Nome { get; set; }
-
         public decimal Preco { get; set; }
-
         public int Estoque { get; set; }
+        public bool Ativo { get; set; }
 
         //1 para Muitos
-        public Categoria Categoria { get; set; }
-
+        public virtual Categoria Categoria { get; set; }
         //Muitos para Muitos
-        public List<Pedido> Pedidos { get; set; }
-
+        public virtual List<Pedido> Pedidos { get; set; }
         //1 para 1
-        public ProdutoImagem Imagem { get; set; }
-
+        public virtual ProdutoImagem Imagem { get; set; }
     }
 }

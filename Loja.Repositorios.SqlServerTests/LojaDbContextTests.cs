@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 //---
 using System.Diagnostics;
 using Loja.Dominio;
+using System.Data.Entity;
 
 
 namespace Loja.Repositorios.SqlServer.Tests
@@ -96,6 +97,43 @@ namespace Loja.Repositorios.SqlServer.Tests
 
             Assert.IsFalse(db.Produtos
                 .Any(p => p.Categoria.Nome == "Informática"));
+        }
+
+        [TestMethod]
+        public void LazyLoadDesligadoTest()
+        {
+            var produto = db.Produtos
+                .SingleOrDefault(p => p.Id == 2);
+
+            Assert.IsNull(produto.Categoria);
+        }
+
+        [TestMethod]
+        public void IncludeTest()
+        {
+            var produto = db.Produtos.Include(p => p.Categoria)
+                .SingleOrDefault(p => p.Id == 2);
+
+            Console.WriteLine(produto.Categoria.Nome);
+        }
+
+        [TestMethod, DataRow(100)]
+        public void QueryableTest(int estoque)
+        {
+            var query = db.Produtos.Where(p => p.Preco > 10);
+
+            if (estoque > 0)
+            {
+                query = query.Where(p => p.Estoque >= estoque);
+            }
+
+            query.OrderBy(p => p.Preco);
+
+            var primeiro = query.FirstOrDefault();
+            //var ultimo = query.LastOrDefault(); // LAST Não funciona para SQL
+            var ultimo = query.AsEnumerable().LastOrDefault(); // Traz TODOS os Registros do Banco
+            var unico = query.SingleOrDefault();
+            var todos = query.ToList();
         }
     }
 }

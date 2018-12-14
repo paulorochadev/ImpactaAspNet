@@ -8,6 +8,8 @@ using System.Data.Entity;
 using Loja.Dominio;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Loja.Repositorios.SqlServer.ModelConfiguration;
+using Loja.Repositorios.SqlServer.Migrations;
+
 
 namespace Loja.Repositorios.SqlServer
 {
@@ -15,6 +17,9 @@ namespace Loja.Repositorios.SqlServer
     {
         public LojaDbContext() : base("lojaSqlServer")
         {
+            //Database.SetInitializer(new LojaDbInitializer()); DROP a BASE e CRIAR um Banco NOVO
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LojaDbContext, Configuration>());
 
         }
 
@@ -39,5 +44,6 @@ namespace Loja.Repositorios.SqlServer
             modelBuilder.Configurations.Add(new ProdutoImagemConfiguration());
         }
 
+        public System.Data.Entity.DbSet<Loja.Dominio.ProdutoImagem> ProdutoImagem { get; set; }
     }
 }
