@@ -22,7 +22,7 @@ namespace Loja.Mvc.Areas.Admin.Models
         [Required, Display(Name ="Categoria")]
         public int? CategoriaId { get; set; }
 
-        public List<SelectListItem> Categorias { get; set; }
+        public List<SelectListItem> Categorias { get; set; } = new List<SelectListItem>();
 
         [Required, Display(Name ="Preço")]
         public decimal Preco { get; set; }

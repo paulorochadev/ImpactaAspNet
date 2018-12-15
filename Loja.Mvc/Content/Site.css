@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Botão de Busca na Tela de CREATE*/
+.d-inline {
+    display: inline;
+}
