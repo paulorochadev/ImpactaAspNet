@@ -2,16 +2,22 @@
 
 pesquisarButton.click(obterProdutoPorCategoria);
 
+//$("#closePopover").click(function () {
+//    pesquisarButton.popover("destroy");
+//});
+
+$(document).on("click", "#closePopover", () => pesquisarButton.popover("destroy"))
+
 function obterProdutoPorCategoria() {
-    const categoriaId = $("#CategoriaId");
+    const categoriaId = $("#CategoriaId").val();
 
     $.ajax({
         url: "/Admin/Produtos/Categoria",
         method: "get", //ou type:
         data: { categoriaId }
     })
-        .then(function (response) { exibirPopover(response); }) // .done() // success
-        .catch(); // .fail() // error
+        .then((response) => { exibirPopover(response); }) // .done() // success
+        .catch(function (e) { alert(e); }); // .fail() // error
 
     //alert("Passou aqui");
 }

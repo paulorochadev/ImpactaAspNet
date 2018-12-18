@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+</head>
+<body>
+    <div id="jsGrid"></div>
+</body>
+</html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+<script>
+    const urlApiProdutos = "http://localhost:50054/api/products";
+
+    $("#jsGrid").jsGrid({
+        width: "100%",
+        height: "auto",
+
+        inserting: true,
+        editing: true,
+        sorting: true,
+        paging: true,
+        pageSize: 20,
+        autoload: true,
+
+        onError: function (erro) { return alert(erro.args[2]); },
+
+        fields: [
+            { title: "Id", name: "productID", type: "number", width: 0, visible: false },
+            { title: "Produto", name: "productName", type: "text", width: 100, validate: "required" },
+            { title: "Preço", name: "unitPrice", type: "number", width: 50, validate: "required" },
+            { title: "Estoque", name: "unitsInStock", type: "number", width: 50, validate: "required" },
+            { type: "control" }
+        ],
+
+        controller: {
+            loadData: function () { return getProducts(); },
+            insertItem: function (produto) { return postProduct(produto); },
+            updateItem: function (produto) { return putProduct(produto); },
+            deleteItem: function (produto) { return deleteProduct(produto); }
+        }
+    });
+
+    function getProducts() {
+        return $.ajax({
+            url: urlApiProdutos
+        });
+    }
+
+    function postProduct(produto) {
+        return $.ajax({
+            url: urlApiProdutos,
+            method: "post",
+            data: produto
+        });
+    }
+
+    function putProduct(produto) {
+        delete produto.suppliers;
+        delete produto.categories;
+
+        return $.ajax({
+            url: urlApiProdutos + "/" + produto.productID,
+            method: "put",
+            data: produto
+        });
+    }
+
+    function deleteProduct(produto) {
+
+        return $.ajax({
+            url: urlApiProdutos + "/" + produto.productID,
+            method: "delete"
+        });
+    }
+    
+</script>

@@ -132,9 +132,12 @@ namespace Loja.Mvc.Areas.Admin.Controllers
         [ActionName("Categoria")]
         public ActionResult ObterProdutoPorCategoria(int categoriaId)
         {
-            var produtos = db.Produtos.Where(p => p.Categoria.Id == categoriaId).ToList();
+            var produtos = db.Produtos
+                .Where(p => p.Categoria.Id == categoriaId)
+                .Select(p => new { p.Nome, p.Preco, p.Estoque})
+                .ToList();
 
-            return Json(map.Mapear(produtos), JsonRequestBehavior.AllowGet);
+            return Json(produtos, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
