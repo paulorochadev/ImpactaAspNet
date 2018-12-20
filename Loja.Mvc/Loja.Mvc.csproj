@@ -231,6 +231,9 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Produtos\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Produtos\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Produtos\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Produtos\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Produtos\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

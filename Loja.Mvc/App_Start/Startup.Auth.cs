@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Loja.Mvc.Models;
 
+
 namespace Loja.Mvc
 {
     public partial class Startup
@@ -58,11 +59,11 @@ namespace Loja.Mvc
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "692779113723-l47829bf3c46sm3a8usb0i1ehpfq80ia.apps.googleusercontent.com",
+                ClientSecret = "UMQr9_bm7YlzfKhTsUppAuvj"
+            });
         }
     }
 }

@@ -11,10 +11,12 @@ using Loja.Repositorios.SqlServer;
 //---
 using Loja.Mvc.Mapeamento;
 using Loja.Mvc.Areas.Admin.Models;
+using System.Security.Claims;
 
 
 namespace Loja.Mvc.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private readonly LojaDbContext db = new LojaDbContext();
@@ -22,14 +24,17 @@ namespace Loja.Mvc.Areas.Admin.Controllers
         private readonly ProdutoMapeamento map = new ProdutoMapeamento();
 
         // GET: Admin/Produtos
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            throw new Exception("Teste");
+            //throw new Exception("Teste");
 
             //var produto = db.Produtos.Include(p => p.Imagem);
+
             return View(map.Mapear(db.Produtos.ToList()));
         }
 
+        [AllowAnonymous]
         // GET: Admin/Produtos/Details/5
         public ActionResult Details(int? id)
         {
@@ -42,7 +47,7 @@ namespace Loja.Mvc.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(map.Mapear(produto));
         }
 
         // GET: Admin/Produtos/Create
@@ -75,17 +80,24 @@ namespace Loja.Mvc.Areas.Admin.Controllers
         // GET: Admin/Produtos/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!((ClaimsIdentity)User.Identity).HasClaim(c => c.Type == "Produtos" && c.Value.Contains("|Edit|")))
+            {
+                return RedirectToAction("Logim", "Account", new { area = "" });
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Produto produto = db.Produtos.Find(id);
+
             if (produto == null)
             {
                 return HttpNotFound();
             }
             ViewBag.Id = new SelectList(db.ProdutoImagem, "ProdutoId", "ContentType", produto.Id);
-            return View(produto);
+
+            return View(map.Mapear(produto, db.Categorias.ToList()));
         }
 
         // POST: Admin/Produtos/Edit/5
@@ -95,6 +107,11 @@ namespace Loja.Mvc.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,Preco,Estoque,Ativo")] Produto produto)
         {
+            if (!((ClaimsIdentity)User.Identity).HasClaim(c => c.Type == "Produtos" && c.Value.Contains("|Edit|")))
+            {
+                return RedirectToAction("Logim", "Account", new { area = ""});
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(produto).State = EntityState.Modified;
@@ -102,10 +119,12 @@ namespace Loja.Mvc.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id = new SelectList(db.ProdutoImagem, "ProdutoId", "ContentType", produto.Id);
-            return View(produto);
+            return View(map.Mapear(produto, db.Categorias.ToList()));
         }
 
         // GET: Admin/Produtos/Delete/5
+        [Authorize(Roles = "Master")]
+        [Authorize(Roles = "Gerente, Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,10 +136,12 @@ namespace Loja.Mvc.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(map.Mapear(produto));
         }
 
         // POST: Admin/Produtos/Delete/5
+        [Authorize(Roles = "Master")]
+        [Authorize(Roles = "Gerente, Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

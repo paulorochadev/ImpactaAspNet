@@ -53,11 +53,13 @@ namespace Loja.Mvc
             // Configurar a lógica de validação para senhas
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                //RequiredLength = 6,
+                //RequireNonLetterOrDigit = true,
+                //RequireDigit = true,
+                //RequireLowercase = true,
+                //RequireUppercase = true,
+
+                RequiredLength = 3,
             };
 
             // Configurar padrões de bloqueio de usuário

@@ -13,6 +13,7 @@ namespace Loja.Mvc.Models
         {
             // Observe que o authenticationType deve corresponder àquele definido em CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            
             // Adicionar declarações de usuário personalizado aqui
             return userIdentity;
         }
@@ -21,7 +22,7 @@ namespace Loja.Mvc.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("lojaIdentitySqlServer", throwIfV1Schema: false)
         {
         }
 
