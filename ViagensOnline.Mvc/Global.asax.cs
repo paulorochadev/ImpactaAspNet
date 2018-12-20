@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+//---
+using System.Web.Helpers;
+using System.Security.Claims;
 
 namespace ViagensOnline.Mvc
 {
@@ -16,6 +19,10 @@ namespace ViagensOnline.Mvc
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Utilização de COOKIE
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
+
 
 // Diretiva de Pré Processamento
 #if DEBUG

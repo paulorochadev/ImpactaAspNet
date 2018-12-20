@@ -14,9 +14,10 @@ using System.IO;
 
 namespace ViagensOnline.Mvc.Controllers
 {
+    [Authorize]
     public class DestinosController : Controller
     {
-        private ViagensOnlineDbContext db = new ViagensOnlineDbContext();
+        private readonly ViagensOnlineDbContext db = new ViagensOnlineDbContext();
 
         //ToDo: Inserir no WEB CONFIG
         private readonly string caminhoImagensDestinos = "/Content/Imagens/Destinos";
@@ -55,6 +56,7 @@ namespace ViagensOnline.Mvc.Controllers
 
         // GET: Destinos/Details/5
         // GET: Destinos/Details?id=5
+        [Authorize(Roles = "Master")]
         public ActionResult Details(int? id)
         {
             if (id == null)
