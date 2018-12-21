@@ -79,6 +79,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{23
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Repositorios.WebApiTests", "Northwind.Repositorios.WebApiTests\Northwind.Repositorios.WebApiTests.csproj", "{54A812C9-3495-4EB5-9B0F-066BF38954EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loja.Resources", "Loja.Resources\Loja.Resources.csproj", "{B3324B5F-55DD-4D23-B440-E01BE60AB851}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -209,6 +211,10 @@ Global
 		{54A812C9-3495-4EB5-9B0F-066BF38954EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54A812C9-3495-4EB5-9B0F-066BF38954EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54A812C9-3495-4EB5-9B0F-066BF38954EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3324B5F-55DD-4D23-B440-E01BE60AB851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3324B5F-55DD-4D23-B440-E01BE60AB851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3324B5F-55DD-4D23-B440-E01BE60AB851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3324B5F-55DD-4D23-B440-E01BE60AB851}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -240,6 +246,7 @@ Global
 		{411547D4-BB4D-40C3-89EA-250EDC0BC10A} = {2A977E31-6405-486C-BC34-33A87F3BD277}
 		{23B1724B-C3BE-48CA-8EBF-C4FE94BBDFDA} = {2A977E31-6405-486C-BC34-33A87F3BD277}
 		{54A812C9-3495-4EB5-9B0F-066BF38954EF} = {23B1724B-C3BE-48CA-8EBF-C4FE94BBDFDA}
+		{B3324B5F-55DD-4D23-B440-E01BE60AB851} = {48308878-7F78-42F7-B709-E90E3D28A80A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2391F7E4-49BE-4EFC-81AA-E344D66436A7}

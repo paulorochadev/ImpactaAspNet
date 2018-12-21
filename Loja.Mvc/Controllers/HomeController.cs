@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+//---
+using Loja.Mvc.Models;
+
 
 namespace Loja.Mvc.Controllers
 {
@@ -11,6 +14,13 @@ namespace Loja.Mvc.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult DefinirLinguagem(string linguagem)
+        {
+            Response.Cookies[Cookie.LinguagemSelecionada].Value = linguagem;
+
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         public ActionResult About()

@@ -5,6 +5,7 @@ using System.Web;
 //---
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Loja.Resources;
 
 
 namespace Loja.Mvc.Areas.Admin.Models
@@ -13,7 +14,7 @@ namespace Loja.Mvc.Areas.Admin.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required, Display(Name = nameof(Literais.NomeProdutoLabel),ResourceType = typeof(Literais))]
         public string Nome { get; set; }
 
         [Display(Name = "Categoria")]
@@ -24,7 +25,7 @@ namespace Loja.Mvc.Areas.Admin.Models
 
         public List<SelectListItem> Categorias { get; set; } = new List<SelectListItem>();
 
-        [Required, Display(Name ="Preço")]
+        [Required, Display(Name ="Preço"), DataType(DataType.Currency)]
         public decimal Preco { get; set; }
 
         [Required]
